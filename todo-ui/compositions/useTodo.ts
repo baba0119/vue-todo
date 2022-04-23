@@ -12,9 +12,6 @@ const countIncrement = (): () => number => {
 }
 
 const useTodo = () => {
-  // 状態の定義
-  const todos = reactive([]) as todoModel[]
-
   // サンプルデータ
   const sampleTodos: todoModel[] = [
     {
@@ -33,6 +30,9 @@ const useTodo = () => {
       isDone: true
     }
   ]
+
+  // 状態の定義
+  const todos = reactive(sampleTodos) as todoModel[]
 
   // todoの登録
   const todoRegister = (title: string) => {
@@ -61,7 +61,6 @@ const useTodo = () => {
   }
 
   return {
-    sampleTodos,
     todos,
     todoRegister,
     todoDelete,
@@ -69,4 +68,5 @@ const useTodo = () => {
   }
 }
 
+export type todoStore = ReturnType<typeof useTodo>
 export default useTodo
