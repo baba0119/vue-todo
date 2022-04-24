@@ -27,7 +27,10 @@ export default defineComponent({
     // form内のテキストの格納
     const title = ref("")
 
-    const register = () => todoRegister(title.value)
+    const register = () => {
+      todoRegister(title.value)
+      title.value = ""
+    }
 
     return {
       title,
